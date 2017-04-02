@@ -11,7 +11,7 @@ $(function() {
         it('has URLs', function() {
             for (url in allFeeds) {
                 expect(allFeeds[url].url).toBeDefined();
-                expect(allFeeds[url].length).not.toBe(0);
+                expect(allFeeds[url].url.length).not.toBe(0);
             }
         });
 
@@ -42,14 +42,12 @@ $(function() {
 
     describe('Initial Entries', function() {
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         //checks that there are entries
         it('has entries', function() {
-            var entry = $('.entry');
+            var entry = $('.feed .entry');
             expect(loadFeed).toBeDefined();
             expect(entry.length).not.toBe(0);
         });
@@ -63,19 +61,19 @@ $(function() {
         beforeEach(function(done) {
             $('.feed').empty();
             loadFeed(0, function() {
-                initialFeed = $('.feed').find("h2").first().text();
+                initialFeed = $('.feed').text();
+                loadFeed(1, function(){});
             });
 
             loadFeed(1, function() {
-                newFeed = $('.feed').find("h2").first().text();
+                newFeed = $('.feed').text();
                 done();
             });
         });
 
-        it('updates new content', function(done) {
+        it('updates new content', function() {
             expect(loadFeed).toBeDefined();
             expect(newFeed).not.toEqual(initialFeed);
-            done();
         });
     });
 
