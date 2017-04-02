@@ -50,6 +50,7 @@ $(function() {
         //checks that there are entries
         it('has entries', function() {
             var entry = $('.entry');
+            expect(loadFeed).toBeDefined();
             expect(entry.length).not.toBe(0);
         });
     });
@@ -70,8 +71,9 @@ $(function() {
                 done();
             });
         });
-        
+
         it('updates new content', function(done) {
+            expect(loadFeed).toBeDefined();
             expect(newFeed).not.toEqual(initialFeed);
             done();
         });
