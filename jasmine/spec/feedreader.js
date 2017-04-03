@@ -9,17 +9,17 @@ $(function() {
 
         //loops through each feed in the allFeeds object and checks it has a URL defined and URL is not empty.
         it('has URLs', function() {
-            for (url in allFeeds) {
-                expect(allFeeds[url].url).toBeDefined();
-                expect(allFeeds[url].url.length).not.toBe(0);
+            for (i in allFeeds) {
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).not.toBe(0);
             }
         });
 
         //loops through each feed in the allFeeds object and checks that it has a name defined and the name is not empty.
         it('has names', function() {
-            for (name in allFeeds) {
-                expect(allFeeds[name].name).toBeDefined();
-                expect(allFeeds[name].length).not.toBe(0);
+            for (i in allFeeds) {
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name.length).not.toBe(0);
             }
         });
     });
@@ -62,12 +62,10 @@ $(function() {
             $('.feed').empty();
             loadFeed(0, function() {
                 initialFeed = $('.feed').text();
-                loadFeed(1, function(){});
-            });
-
-            loadFeed(1, function() {
-                newFeed = $('.feed').text();
-                done();
+                loadFeed(1, function() {
+                  newFeed = $('.feed').text();
+                  done();
+                });
             });
         });
 
